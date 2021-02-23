@@ -91,4 +91,26 @@ class DequeTest {
         assertThat(dequeIntActual.removeFront(), is(5));
         assertThat(dequeIntActual.size(), is(0));
     }
+    
+     @Test
+    void palindrome1Element() {
+        assertThat(palindrome("q"), is(true));
+        assertTrue(palindrome("O"));
+    }
+
+    @Test
+    void palindrome5Element() {
+        assertThat(palindrome("qwewq"), is(true));
+        assertThat(palindrome("qwewe"), is(false));
+    }
+
+    @Test
+    void palindrome4Element() {
+        assertThat(palindrome("qwwq"), is(true));
+    }
+
+    @Test
+    void palindrome4ElementMiddleDifferent() {
+        assertThat(palindrome("qwYq"), is(false));
+    }
 }
