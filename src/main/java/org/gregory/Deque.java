@@ -60,6 +60,28 @@ public class Deque<T> {
         }
         return i;
     }
+    
+        public static boolean palindrome(String str) {
+        Deque<Character> dequeChar = new Deque<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            dequeChar.addTail(str.charAt(i));
+        }
+
+        Node nodeFront = dequeChar.getNodeDummy().getNext();
+        Node nodeTail = dequeChar.getNodeDummy().getPrev();
+
+        for (int i = 0; i < (str.length() / 2) + 1; i++) {
+            dequeChar.addTail(str.charAt(i));
+
+            if (nodeFront.getValue() != nodeTail.getValue()) {
+                return false;
+            }
+            nodeFront = nodeFront.getNext();
+            nodeTail = nodeTail.getPrev();
+        }
+        return true;
+    }
 
     @Override
     public boolean equals(Object o) {
